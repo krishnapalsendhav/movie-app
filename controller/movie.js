@@ -34,7 +34,9 @@ const getMovie = async (req, res) => {
     const movie = await Movie.findOne({_id: moviesID});
     if (!movie) {
        return res.status(404).json({
-            Error : `NOT FOUND from id : ${moviesID}`
+        responseCode: 404,
+        status: "failed",
+        responseMsg: `Movie not found from id : ${moviesID}`,
         });
     }
     res.status(200).json({
@@ -57,7 +59,9 @@ const updateMovie = async (req, res) => {
       });
       if (!movie) {
          return res.status(404).json({
-              Error : `NOT FOUND from id : ${moviesID}`
+          responseCode: 404,
+          status: "failed",
+          responseMsg: `Movie not found from id : ${moviesID}`,
           });
       }
       res.status(200).json({
@@ -77,7 +81,9 @@ const updateMovie = async (req, res) => {
       const movie = await Movie.findOneAndDelete({_id: moviesID});
       if (!movie) {
          return res.status(404).json({
-              Error : `NOT FOUND from id : ${moviesID}`
+          responseCode: 404,
+          status: "failed",
+          responseMsg: `Movie not found from id : ${moviesID}`,
           });
       }
       res.status(200).json({
